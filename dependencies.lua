@@ -1,3 +1,3 @@
 Class = require 'class'
 require 'LightSource'
-require 'MathStructs'
+require 'C:/Users/alexa/Desktop/Love2D/MathStructs'
