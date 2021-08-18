@@ -2,10 +2,12 @@ require 'dependencies'
 
 function love.load()
   shader = love.graphics.newShader("Light.glsl" )
+  objlist = generateObj()
   light= LightSource{
     type="circular",
     position={x=300,y=300},
     radius=250}
+
 
 
 
@@ -21,3 +23,8 @@ function love.draw()
   light:send(shader)
   love.graphics.setShader(shader)
 end
+
+function generateObj()
+  tab={
+  }
+  table.insert(tab,S)

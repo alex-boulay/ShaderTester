@@ -1,3 +1,6 @@
 Class = require 'class'
 require 'LightSource'
-require 'C:/Users/alexa/Desktop/Love2D/MathStructs'
+local curr_dir=love.filesystem.getRealDirectory("")
+print(curr_dir)
+package.path = package.path .. ";"..curr_dir .."../MathStructs/?.lua"
+require "MathStructs"
