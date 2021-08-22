@@ -7,7 +7,9 @@ function love.load()
     position={x=300,y=300},
     radius=250}
 
-  boxes = Rectangle(Vector(ACTUALW/2,ACTUALH/2),Vector(450,250))
+  boxes = {
+    Rectangle(Vector(ACTUALW/2,ACTUALH/2),Vector(450,250))
+}
 
 
 
