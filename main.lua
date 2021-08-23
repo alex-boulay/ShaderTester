@@ -7,9 +7,8 @@ function love.load()
     position={x=300,y=300},
     radius=250}
 
-  boxes = {
+  box =
     Rectangle(Vector(ACTUALW/2,ACTUALH/2),Vector(450,250))
-}
 
 
 
@@ -29,4 +28,9 @@ function love.draw()
   love.graphics.rectangle("fill",box.c.x,box.c.y,box.s.x,box.s.y)
   light:send(shader)
   love.graphics.setShader(shader)
+
+  love.graphics.setColor(1,1,0)
+  for i,j in pairs(box:findVertices()) do
+    Segment(j,light.shape.c):Draw()
+  end
 end

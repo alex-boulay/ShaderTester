@@ -4,7 +4,7 @@ LightSource =Class{}
 
 function LightSource:init(data)
   self.shape=Circle(Vector(data.position.x,data.position.y),data.radius)
-  self.color=data.color or {1,1,1,1}
+  self.color=data.color or {1,1,1}
 end
 
 function LightSource:send(shader)
