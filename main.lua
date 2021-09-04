@@ -10,17 +10,40 @@ function love.load()
   box =
     Rectangle(Vector(ACTUALW/2,ACTUALH/2),Vector(450,250))
 
-
-
-
-
 end
+
+local lastvisibility= false
+function love.visible(v)
+  if lastvisibility~=v then
+    if v then
+      print("visible\n")
+    else
+      print("invisible\n")
+    end
+    lastvisibility=v
+  end
+end
+
+function love.focus(t)
+  if t and love.window.isMaximized() then
+    love.window.restore()
+    love.window.maximize()
+  end
+end
+
 
 function love.update(dt)
   light:update(love.mouse.getPosition())
+  if love.keyboard.isDown("e") then
+    love.window.maximize()
+  end
+  if love.keyboard.isDown("r") then
+    love.window.minimize()
+  end
 end
 
 function love.draw()
+  
   love.graphics.setColor(0.2,0.2,0)
   love.graphics.rectangle("fill", 0,0,ACTUALW,ACTUALH)
 
