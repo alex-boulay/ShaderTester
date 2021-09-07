@@ -15,6 +15,7 @@ end
 
 -- must be called after updating all position
 function Lighting:update()
+  
 
 end
 

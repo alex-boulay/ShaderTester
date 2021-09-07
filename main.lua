@@ -6,7 +6,6 @@ function love.load()
     type="circular",
     position={x=300,y=300},
     radius=250}
-
   box =
     Rectangle(Vector(ACTUALW/2,ACTUALH/2),Vector(450,250))
 
@@ -31,7 +30,7 @@ function love.focus(t)
   end
 end
 
-
+local timer1= 0
 function love.update(dt)
   light:update(love.mouse.getPosition())
   if love.keyboard.isDown("e") then
@@ -40,10 +39,16 @@ function love.update(dt)
   if love.keyboard.isDown("r") then
     love.window.minimize()
   end
+  timer1=timer1+dt
+  if timer1 > 1 then
+    timer1 =0
+    print(love.mouse.getPosition())
+    print(love.mouse.getRelativeMode( ))
+  end
 end
 
 function love.draw()
-  
+
   love.graphics.setColor(0.2,0.2,0)
   love.graphics.rectangle("fill", 0,0,ACTUALW,ACTUALH)
 
