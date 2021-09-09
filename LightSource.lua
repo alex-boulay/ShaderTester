@@ -17,3 +17,12 @@ function LightSource:update(x,y)
   self.shape.c.x=x
   self.shape.c.y=y
 end
+
+function LightSoucre:Obsctructions(Olist)
+  local inrange={}
+  for k,obs in pairs(Olist) do
+    if MScollide(self.shape,obs)then
+      table.insert(inrange,obs)
+    end
+  end
+end

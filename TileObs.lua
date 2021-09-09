@@ -19,3 +19,7 @@ function TileObs:Draw()
   end
   Rectangle.Draw(self)
 end
+
+function TileObs:Type()
+  return "Tile"
+end
