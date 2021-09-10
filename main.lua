@@ -1,20 +1,21 @@
 require 'dependencies'
 
 function love.load()
-  shader = lve.graphics.newShader("Light.glsl" )
-  Lighting={
-    lights={LightSource{
-      type="circular",
-      position={x=300,y=300},
-      radius=250}},
-    {tile = TileObs(150,150)}
+  shader = love.graphics.newShader("Light.glsl" )
+  mainlight=LightSource{
+    type="circular",
+    position={x=300,y=300},
+    radius=250}
+  lighting=Lighting{
+    lights={mainlight},
+    obstruct={tile = TileObs(150,150)}
   }
 end
 
 local timer1=0
 local count=0
 function love.update(dt)
-  light:update(love.mouse.getPosition())
+  mainlight:update(love.mouse.getPosition())
   if timer1<3 then
     timer1=timer1+dt
     count=count+1
@@ -37,11 +38,12 @@ function love.draw()
   love.graphics.setColor(0.2,0.2,0)
   love.graphics.rectangle("fill", 0,0,ACTUALW,ACTUALH)
 
-  tile:Draw()
-
-
-  love.graphics.setColor(1,1,0)
-  for i,j in pairs(tile:findVertices()) do
-    Segment(j,light.shape.c):Draw()
+  for k,val in pairs(lighting.obstruct) do
+    val:Draw()
+    love.graphics.setColor(1,1,0)
+    for i,j in pairs(val:findVertices()) do
+      Segment(j,mainlight.shape.c):Draw()
+    end
   end
+  lighting:drawLights()
 end

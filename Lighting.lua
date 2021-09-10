@@ -17,7 +17,6 @@ end
 -- must be called after updating all position
 function Lighting:update()
 
-
 end
 
 function Lighting:lightCanvas()
@@ -25,7 +24,9 @@ function Lighting:lightCanvas()
 end
 
 function Lighting:drawLights()
+
   for k,light in pairs(self.lights) do
+    light:Obsctructions(self.obstruct)
     light:send(shader)
     love.graphics.setShader(shader)
   end
