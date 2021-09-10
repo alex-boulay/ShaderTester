@@ -1,4 +1,5 @@
 require 'dependencies'
+screenbox = Rectangle(NullVec,Vector(graphics.window.getDimensions))
 
 function love.load()
   shader = love.graphics.newShader("Light.glsl" )
@@ -24,6 +25,10 @@ function love.update(dt)
     timer1=0
     count=0
   end
+end
+
+function love.onresize(w,h)
+  screenbox=Rectangle(NullVec,Vector(w,h))
 end
 
 function love.focus(t)
