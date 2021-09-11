@@ -26,9 +26,10 @@ end
 function Lighting:drawLights()
 
   for k,light in pairs(self.lights) do
-    light:Obsctructions(self.obstruct)
     light:send(shader)
     love.graphics.setShader(shader)
+    love.graphics.setColor(1,0,0)
+    light:Obsctructions(self.obstruct)
   end
 end
 

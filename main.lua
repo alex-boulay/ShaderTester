@@ -1,5 +1,5 @@
 require 'dependencies'
-screenbox = Rectangle(NullVec,Vector(graphics.window.getDimensions))
+screenbox = Rectangle(NullVec,Vector(love.window.getMode()))
 
 function love.load()
   shader = love.graphics.newShader("Light.glsl" )
@@ -47,7 +47,7 @@ function love.draw()
     val:Draw()
     love.graphics.setColor(1,1,0)
     for i,j in pairs(val:findVertices()) do
-      Segment(j,mainlight.shape.c):Draw()
+      --Segment(j,mainlight.shape.c):Draw()
     end
   end
   lighting:drawLights()

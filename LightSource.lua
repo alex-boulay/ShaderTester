@@ -33,7 +33,13 @@ end
 
 function LightSource:Obsctructions(Olist)
   local seglist=self:getObsSeg(Olist)
-  
+  local shadows={}
+  for k,seg in pairs(seglist) do
+    table.insert(shadows,self.shape.c:ScreenWallProj(seg,screenbox))
+  end
+  for k,sha in pairs(shadows) do
+    sha:Draw()
+  end
 end
 
 function LightSource:inRange(Olist)
