@@ -27,7 +27,8 @@ end
 function Lighting:drawLights()
 
   for k,light in pairs(self.lights) do
-    light:Draw(self.shader,self.obstruct)
+    light:Draw(self.shader)
+    light:Obsctructions(self.obstruct)
   end
 end
 

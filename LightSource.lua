@@ -6,6 +6,7 @@ function LightSource:init(data)
   self.shape=Circle(Vector(data.position.x,data.position.y),data.radius)
   self.color=data.color or {1,1,1}
   self.hasmoved=false --trying to optimise calculus for static lights
+  self.canvas=love.graphics.newCanvas()
 end
 
 function LightSource:send(shader)
@@ -37,6 +38,7 @@ function LightSource:Obsctructions(Olist)
   for k,seg in pairs(seglist) do
     table.insert(shadows,self.shape.c:ScreenWallProj(seg,screenbox))
   end
+  love.graphics.setColor(-1,-1,-1)
   for k,sha in pairs(shadows) do
     sha:Draw()
   end
@@ -58,16 +60,12 @@ function LightSource:getObsSeg(Olist)
   for k,obs in pairs(inrange) do
     for k1,seg in pairs(obs:OpEdgesP(self.shape.c))do
       table.insert(seglist,seg)
-      seg:Draw()
     end
   end
   return seglist
 end
 
-function LightSource:Draw(shader,obsctructions)
+function LightSource:Draw(shader)
     self:send(shader)
     love.graphics.setShader(shader)
-    love.graphics.setColor(0,0,0,1)
-    self:Obsctructions(obsctructions)
-
 end

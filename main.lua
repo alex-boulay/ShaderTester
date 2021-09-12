@@ -39,15 +39,11 @@ end
 
 function love.draw()
 
-  love.graphics.setColor(0.2,0.2,0)
+  love.graphics.setColor(1,1,1)
   love.graphics.rectangle("fill", 0,0,ACTUALW,ACTUALH)
 
   for k,val in pairs(lighting.obstruct) do
     val:Draw()
-    love.graphics.setColor(1,1,0)
-    for i,j in pairs(val:findVertices()) do
-      --Segment(j,mainlight.shape.c):Draw()
-    end
   end
   lighting:drawLights()
 end
