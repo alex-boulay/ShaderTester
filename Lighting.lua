@@ -12,7 +12,8 @@ function Lighting:addLight(l)
   table.insert(self.lights,l)
 end
 
-function Lighting:addItems()
+function Lighting:addObs()
+  
 end
 
 -- must be called after updating all position

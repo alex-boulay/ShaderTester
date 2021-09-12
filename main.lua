@@ -8,8 +8,11 @@ function love.load()
     radius=250}
   lighting=Lighting{
     lights={mainlight},
-    obstruct={tile = TileObs(150,150)}
+    obstruct={tile = TileObs(150,100)}
   }
+  for i=0,300,50 do
+    --table.insert(lighting.obstruct,TileObs(i,0))
+  end
 end
 
 local timer1=0
@@ -41,9 +44,10 @@ function love.draw()
 
   love.graphics.setColor(1,1,1)
   love.graphics.rectangle("fill", 0,0,ACTUALW,ACTUALH)
-
   for k,val in pairs(lighting.obstruct) do
     val:Draw()
   end
   lighting:drawLights()
+
+
 end
