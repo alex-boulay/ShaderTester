@@ -55,12 +55,19 @@ end
 function LightSource:getObsSeg(Olist)
   local inrange= self:inRange(Olist)
   local seglist={} --list of obstructing segments
-  love.graphics.setColor(1,0,0)
-  for k,obs in pairs(Olist) do
+  for k,obs in pairs(inrange) do
     for k1,seg in pairs(obs:OpEdgesP(self.shape.c))do
       table.insert(seglist,seg)
       seg:Draw()
     end
   end
   return seglist
+end
+
+function LightSource:Draw(shader,obsctructions)
+    self:send(shader)
+    love.graphics.setShader(shader)
+    love.graphics.setColor(0,0,0,1)
+    self:Obsctructions(obsctructions)
+
 end

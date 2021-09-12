@@ -2,7 +2,6 @@ require 'dependencies'
 screenbox = Rectangle(NullVec,Vector(love.window.getMode()))
 
 function love.load()
-  shader = love.graphics.newShader("Light.glsl" )
   mainlight=LightSource{
     type="circular",
     position={x=300,y=300},

@@ -5,6 +5,7 @@ function Lighting:init(data)
   self.obstruct=data.obstruct or {}
   self.buffers={}
   self.itemtree={}
+  self.shader=love.graphics.newShader("Light.glsl")
 end
 
 function Lighting:addLight(l)
@@ -26,10 +27,7 @@ end
 function Lighting:drawLights()
 
   for k,light in pairs(self.lights) do
-    light:send(shader)
-    love.graphics.setShader(shader)
-    love.graphics.setColor(1,0,0)
-    light:Obsctructions(self.obstruct)
+    light:Draw(self.shader,self.obstruct)
   end
 end
 
