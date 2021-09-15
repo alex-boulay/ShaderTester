@@ -1,6 +1,5 @@
 require 'dependencies'
 screenbox = Rectangle(NullVec,Vector(love.window.getMode()))
-
 function love.load()
   mainlight=LightSource{
     type="circular",
@@ -11,8 +10,10 @@ function love.load()
     obstruct={tile = TileObs(150,100)}
   }
   for i=0,300,50 do
-    --table.insert(lighting.obstruct,TileObs(i,0))
+    table.insert(lighting.obstruct,TileObs(i,0))
   end
+
+  screenproj=love.graphics.newCanvas()
 end
 
 local timer1=0
@@ -41,8 +42,8 @@ function love.focus(t)
 end
 
 function love.draw()
-
-  love.graphics.setColor(1,1,1)
+  lighting:prep()
+  love.graphics.setColor(1,0,1)
   love.graphics.rectangle("fill", 0,0,ACTUALW,ACTUALH)
   for k,val in pairs(lighting.obstruct) do
     val:Draw()
