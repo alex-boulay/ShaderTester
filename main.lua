@@ -7,11 +7,7 @@ function love.load()
     radius=250}
   lighting=Lighting{
     lights={mainlight},
-<<<<<<< HEAD
     obstruct={} ,--tile = TileObs(150,100)}
-=======
-    obstruct={}--tile = TileObs(150,100)}
->>>>>>> b3836a05a92fcaa027044e21d45038a36bfa6c1f
     screen=screenbox
   }
   for i=0,300,50 do
