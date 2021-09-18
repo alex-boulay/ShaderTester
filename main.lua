@@ -7,10 +7,11 @@ function love.load()
     radius=250}
   lighting=Lighting{
     lights={mainlight},
-    obstruct={tile = TileObs(150,100)}
+    obstruct={}--tile = TileObs(150,100)}
+    screen=screenbox
   }
   for i=0,300,50 do
-    table.insert(lighting.obstruct,TileObs(i,0))
+    table.insert(lighting.obstruct,TileObs(i,i,4))
   end
 
   screenproj=love.graphics.newCanvas()
@@ -24,7 +25,6 @@ function love.update(dt)
     timer1=timer1+dt
     count=count+1
   else
-    print("Average time per frame : ",timer1/count*1000," MS \n")
     timer1=0
     count=0
   end
